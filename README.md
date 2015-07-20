@@ -46,7 +46,7 @@ Compile your RPI Kernel
     * Switch to kernel directory: `cd kernel-3.12`
     * Remove old Kernel Image before compiling:
       * `rm arch/arm/boot/Image`
-      * `make clean` - *Notes: if you are building modules, **do not execute this statement**, it will **reset module drivers** (if you are just building your pure kernel, go ahead with this statement)*
+      * `make clean` - *Notes: if you are building modules, do not execute this statement, it will reset module drivers (if you are just building your pure kernel, go ahead with this statement)*
       * `make ARCH=arm CROSS_COMPILE=$CCPREFIX`
     * After compilation, the Kernel image, file `Image`, is placed in `kernel-3.12/arch/arm/boot` directory. Make sure the date is current and the size is around 6.44 Mbytes.
 
@@ -73,3 +73,4 @@ In this section, I'm giving an example of compiling the popular `Realtek 8192cu`
   * Once done, your driver object files should have be copied to the drivers directory of the kernel 3.12, you can verify the modified date `ls -ls ${BUILD_RPI_DIR}/kernel-3.12/drivers/net/wireless/rtl8192cu/`
   * Now you just need to repeat steps in "Compile your RPI Kernel" (except `make clean`) and copy new kernel (`Image` file) into the SD Card as per instructions above.
   * To verify if wlan0 is loaded, in RPI, execute `ifconfig -a`. If you found wlan0 listed, it means the driver has been compiled correctly.
+
