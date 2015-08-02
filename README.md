@@ -74,3 +74,29 @@ In this section, I'm giving an example of compiling the popular `Realtek 8192cu`
   * Now you just need to repeat steps in "Compile your RPI Kernel" (except `make clean`) and copy new kernel (`Image` file) into the SD Card as per instructions above.
   * To verify if wlan0 is loaded, in RPI, execute `ifconfig -a`. If you found wlan0 listed, it means the driver has been compiled correctly.
 
+Case Study 4 - Compile procfs module
+--------------
+As per the case study instruction document, 2 directories and some files are added:
+  * Directory `mod_app` under `ext-modules/` contains: `Makefile`, `proc_fs.c`. This source code can be compiled by `make` (make sure you've loaded the env variables by `source envSetup.bash` in main directory.
+  * Directory `svu` under `kernel-3.12/drivers` contains: `Makefile`, `procfs_mod.c`. This source will be compiled and integrated into the kernel when you do kernel compiling `make ARCH=arm CROSS_COMPILE=$CCPREFIX`.
+    * Note: the `kernel-3.12/drivers/svu/Makefile` was also appended with [additional instruction](https://github.com/stevenvo/cs500-build-rpi/blob/master/kernel-3.12/drivers/Makefile#L155) to compile `svu/procfs_mod`.
+
+After loading the new kernel to the boot drive of RPI SD Card and copying the `proc_fs` program from `ext-modules/mod_app/` to the RPI, you can run the program by `./procfs_ap`
+The result should look like these lines:
+```
+$ ./procfs_ap 
+Shared Memory ID 0
+./procfs_ap: Read: 4 Bytes
+./procfs_ap: Read 1 System Uptime 168 Seconds
+./procfs_ap: rd_buf 0xa8:0:0:0
+./procfs_ap: Read: 4 Bytes
+./procfs_ap: Read 2 System Uptime 173 Seconds
+./procfs_ap: rd_buf 0xad:0:0:0
+./procfs_ap: Read: 4 Bytes
+./procfs_ap: Read 3 System Uptime 178 Seconds
+./procfs_ap: rd_buf 0xb2:0:0:0
+./procfs_ap: Read: 4 Bytes
+./procfs_ap: Read 4 System Uptime 183 Seconds
+./procfs_ap: rd_buf 0xb7:0:0:0
+./procfs_ap: Read: 4 Bytes
+```
