@@ -1,6 +1,6 @@
-Image
-zImage
-xipImage
-bootpImage
-uImage
+#Image
+#zImage
+#xipImage
+#bootpImage
+#uImage
 *.dtb
