@@ -4,7 +4,7 @@ This github addresses these problems:
 - provide some instructions, build and environmental contents so you can  start building your Raspberry Pi kernels and modules
 - solves the case studies of the CS500 class.
 
-*Note: The content of this repository is based on the materials and instructions taught in module [CS500-SVUCA](http://class.svuca.edu/~sau/class/CS500/), taught by professor Simon Au.*
+*Note: The content of this repository is based on the materials and instructions from module [CS500](http://class.svuca.edu/~sau/class/CS500/) at http://www.svuca.edu, taught by professor Simon Au.*
 
 Prerequisites
 -------------
